@@ -29,18 +29,20 @@
 #include <NXTCompass.h>
 
 
+NXTCompass          compass;
+
 void
 setup()
 {
 
     Serial.begin(9600);         // start serial for outpu
-
+     
 
 }
 
 void
 loop()
 {
-
+  Serial.println(compass.read());
 
 }
