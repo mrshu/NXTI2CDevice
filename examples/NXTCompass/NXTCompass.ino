@@ -44,5 +44,6 @@ void
 loop()
 {
   Serial.println(compass.read());
+  delay(50);
 
 }
