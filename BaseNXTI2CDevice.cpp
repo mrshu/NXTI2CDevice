@@ -28,8 +28,8 @@ extern "C" {
 #include "../Wire/utility/twi.h"
 }
 
-// Max I2C message length is 16 bytes.  
-const int BUFFER_LEN = 16;	
+// Max I2C message length is 16 bytes.
+const int BUFFER_LEN = 16;
 
 
 // Initialize static variables
@@ -151,7 +151,7 @@ bool NXTI2CDevice::writeRegisters(
 	Wire.beginTransmission(_device_address);
   	Wire.send(start_register);
   	//Wire.send(bytes_to_write);	// This is a guess
-  	
+
   	// Send the data
   	for (uint8_t index = 0; index < bytes_to_write; ++index)
   	{
@@ -223,8 +223,8 @@ void NXTI2CDevice::setWriteErrorCode(uint8_t code)
 
 /*
  * checkAddress()
- * this function checks to see if there is 
- * any device at a given address 
+ * this function checks to see if there is
+ * any device at a given address
  * - deepak
  */
 
@@ -232,7 +232,7 @@ bool NXTI2CDevice::checkAddress()
 {
 	uint8_t *txBuffer;
 	int8_t x = 1;
-	x = twi_writeTo(_device_address, txBuffer, 0, 1) == 0;
+	x = twi_writeTo(_device_address, txBuffer, 0, 1, 1) == 0;
 	return (x != 0);
 }
 
@@ -240,9 +240,9 @@ bool NXTI2CDevice::checkAddress()
 /*
  * setAddress(address)
  * this function set's the i2c address
- * for this instance to given address 
+ * for this instance to given address
  * Note that, generally i2c address of a physical device does not change.
- * Use this function if there are multiple devices on your bus and you want to 
+ * Use this function if there are multiple devices on your bus and you want to
  * conserve processor memory from instantiating another class instance.
  * - deepak
  */
