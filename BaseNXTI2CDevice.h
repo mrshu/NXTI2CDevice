@@ -2,7 +2,7 @@
 // NXTI2CDevice.h
 //
 // This is a class for controlling some LEGO Mindstorms NXT devices that
-// communicate using the I2C protocol. 
+// communicate using the I2C protocol.
 //
 // Use at your own risk!
 //
@@ -27,7 +27,12 @@
 #ifndef BASENXTI2CDEVICE_H
 #define BASENXTI2CDEVICE_H
 
-#include "WProgram.h"
+#if defined(ARDUINO) && ARDUINO >= 100
+  #include "Arduino.h"
+#else
+  #include "WProgram.h"
+#endif
+
 #include <inttypes.h>
 
 inline uint16_t readIntFromBuffer(uint8_t* buf)
@@ -78,7 +83,7 @@ class NXTI2CDevice
 {
 	// Note that this class is a base class, but not an abstract base class
 	// Feel free to instantiate NXTI2CDevices.
-	
+
 public:
 
 	NXTI2CDevice(uint8_t i2c_address);
