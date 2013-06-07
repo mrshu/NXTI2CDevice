@@ -102,6 +102,7 @@ loop()                          // After the setup the LED blinks to show
 {
     if (Serial.available()) {
       i2c_check(END_ADDRESS);
+      Serial.read();
       Serial.println("=> Press any key to start the scan again.");
     }
 }
