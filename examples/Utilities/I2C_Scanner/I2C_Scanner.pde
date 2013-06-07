@@ -23,6 +23,7 @@
 * When        Who                 Comments
 * 05/28/10    Deepak Patil        Initial authoring.
 * 06/08/10    Andrew Sylvester    Modification of I2C Scanner for NXTI2CDevice Class
+* 06/07/13    mrShu               Easier I2C check
 */
 
 #include <Wire.h>
