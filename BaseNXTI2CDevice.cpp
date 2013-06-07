@@ -81,7 +81,7 @@ uint8_t* NXTI2CDevice::readRegisters(
 
 	// We write to the I2C device to tell it where we want to read from
 	Wire.beginTransmission(_device_address);
-  	Wire.send(start_register);
+  	Wire.write(start_register);
   	//Wire.send(bytes_to_read);
   	Wire.endTransmission();
 
@@ -90,7 +90,7 @@ uint8_t* NXTI2CDevice::readRegisters(
 
     for (uint8_t index = 0; Wire.available(); ++index)
     {
-    	buffer[index] = Wire.receive();
+    	buffer[index] = Wire.read();
     }
 
     Wire.endTransmission();
@@ -149,13 +149,13 @@ bool NXTI2CDevice::writeRegisters(
 
 	// We write to the I2C device to tell it where we want to read from and how many bytes
 	Wire.beginTransmission(_device_address);
-  	Wire.send(start_register);
+  	Wire.write(start_register);
   	//Wire.send(bytes_to_write);	// This is a guess
 
   	// Send the data
   	for (uint8_t index = 0; index < bytes_to_write; ++index)
   	{
-  		Wire.send(buffer[index]);
+  		Wire.write(buffer[index]);
   	}
 
   	_write_error_code = Wire.endTransmission();
