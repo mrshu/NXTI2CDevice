@@ -1,8 +1,8 @@
 /************************************************************************/
-/*                                                                 
-	Copyright (c) 2010 by mindsensors.com                                
-	Email: info (<at>) mindsensors (<dot>) com                          
-                                                                    
+/*
+	Copyright (c) 2010 by mindsensors.com
+	Email: info (<at>) mindsensors (<dot>) com
+
 	This library is free software; you can redistribute it and/or
 	modify it under the terms of the GNU Lesser General Public
 	License as published by the Free Software Foundation; either
@@ -28,23 +28,19 @@
 #include <Wire.h>
 #include <NXTI2CDevice.h>       // Needs to be included here for //
                            // the NXTI2CDevice to work //
-void
-setup()
+
+void i2c_check (int end_addr)
 {
     char            str[35];
     char            s[35];
     int             i;
-    int             start_addr,
-                    end_addr;
+    int             start_addr;
     bool            status;
     char           *str2;
 
     start_addr = 1;
     end_addr = 20;              // End adress may be modified to any
                                 // number up to 127
-
-    Serial.begin(9600);         // Start Communication with the Aurduio at 
-                                // 96000 baud (speed)
 
     // Print showing the scan has begun
     sprintf(str, "Scanning %d to %d ...", start_addr * 2, end_addr * 2);
@@ -55,7 +51,7 @@ setup()
     // adress
     for (i = start_addr * 2; i <= end_addr * 2; i += 2) {
         sprintf(str, "Checking Address %d .... ", i);   // Print which
-        // adress is being 
+        // adress is being
         // checked
         mid.setAddress(i);
         Serial.print(str);
@@ -82,14 +78,28 @@ setup()
         }
     }
     Serial.println("I2C Scan Complete.");
+
+
+
+}
+
+int END_ADDRESS = 20;
+
+void
+setup()
+{
+    Serial.begin(9600);         // Start Communication with the Aurduio at
+    i2c_check(END_ADDRESS);
+    Serial.println("=> Press any key to start the scan again.")
+
 }
 
 void
 loop()                          // After the setup the LED blinks to show
                                 // the program is complete
 {
-    digitalWrite(13, HIGH);     // set the LED on
-    delay(1000);                // wait 
-    digitalWrite(13, LOW);      // set the LED off
-    delay(1000);                // wait
+    if (Serial.available()) {
+      i2c_check(END_ADDRESS);
+      Serial.println("=> Press any key to start the scan again.")
+    }
 }
