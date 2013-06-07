@@ -1,7 +1,8 @@
 /************************************************************************/
 /*
-	Copyright (c) 2010 by mindsensors.com
+	Copyright (c) 2010 by mindsensors.com, 2013 XLC Team
 	Email: info (<at>) mindsensors (<dot>) com
+         xlc.team@gmail.com
 
 	This library is free software; you can redistribute it and/or
 	modify it under the terms of the GNU Lesser General Public
@@ -91,7 +92,7 @@ setup()
 {
     Serial.begin(9600);         // Start Communication with the Aurduio at
     i2c_check(END_ADDRESS);
-    Serial.println("=> Press any key to start the scan again.")
+    Serial.println("=> Press any key to start the scan again.");
 
 }
 
@@ -101,6 +102,6 @@ loop()                          // After the setup the LED blinks to show
 {
     if (Serial.available()) {
       i2c_check(END_ADDRESS);
-      Serial.println("=> Press any key to start the scan again.")
+      Serial.println("=> Press any key to start the scan again.");
     }
 }
