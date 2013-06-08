@@ -29,8 +29,7 @@ class HTIRSeekerV2 : public NXTI2CDevice
 public:
     HTIRSeekerV2(uint8_t i2c_address = 0x10);
     void        read(uint8_t *dir, uint8_t *s1, uint8_t *s2, uint8_t *s3, uint8_t *s4,
-                    uint8_t *s5)
-;
+                    uint8_t *s5);
 
 };
 
