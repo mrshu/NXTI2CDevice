@@ -36,14 +36,7 @@ uint16_t RelativeNXTCompass::read_raw()
     r1 = readByte(0x45);
 
     r1 = r1 * 256;
-
     delay(10);
-
-    Serial.print(r0);
-    Serial.print(' ');
-    Serial.print(r1);
-    Serial.print(' ');
-    Serial.println(r1 + r0);
 
     return r1 + r0;
 }
