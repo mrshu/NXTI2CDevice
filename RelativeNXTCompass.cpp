@@ -40,9 +40,7 @@ uint8_t RelativeNXTCompass::read_raw()
     Serial.print(' ');
     Serial.println(r[1]);
 
-
-    int c = (r[1] * 256) + (uint8_t) r[0];
-    return c;
+    return ((r[1] * 256) + r[0]);
 }
 
 
