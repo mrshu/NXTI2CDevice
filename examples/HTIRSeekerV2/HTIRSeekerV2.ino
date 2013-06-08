@@ -44,7 +44,7 @@ void
 loop()
 {
   
-  int dir, s1, s2, s3, s4, s5;
+  uint8_t dir, s1, s2, s3, s4, s5;
   seeker.read(&dir, &s1, &s2, &s3, &s4, &s5);
 
   Serial.print(s1);
