@@ -29,12 +29,12 @@ class RelativeNXTCompass : public NXTI2CDevice
 public:
 	RelativeNXTCompass(uint8_t i2c_address = 0x02);
 
-	uint8_t		read_raw();
-	uint8_t		angle();
-	uint8_t		real_north();
-	void        set_north();
+	uint16_t		read_raw();
+	uint16_t		angle();
+	uint16_t		real_north();
+	void            set_north();
 private:
-    uint8_t     _north;
+    uint16_t        _north;
 };
 
 #endif

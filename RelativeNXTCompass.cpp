@@ -29,13 +29,13 @@ RelativeNXTCompass::RelativeNXTCompass(uint8_t i2c_address)
     _north = 0;
 }
 
-uint8_t RelativeNXTCompass::read_raw()
+uint16_t RelativeNXTCompass::read_raw()
 {
-    byte r0, r1;
+    uint16_t r0, r1;
     r0 = readByte(0x44);
     r1 = readByte(0x45);
 
-    r1 = r1 * 255;
+    r1 = r1 * 256;
 
     delay(10);
 
@@ -45,7 +45,7 @@ uint8_t RelativeNXTCompass::read_raw()
     Serial.print(' ');
     Serial.println(r1 + r0);
 
-    return (r1 + r0);
+    return r1 + r0;
 }
 
 
@@ -54,9 +54,9 @@ void RelativeNXTCompass::set_north()
     _north = read_raw();
 }
 
-uint8_t RelativeNXTCompass::angle()
+uint16_t RelativeNXTCompass::angle()
 {
-    uint8_t relative_angle = (read_raw() - _north + 360) % 360;
+    uint16_t relative_angle = (read_raw() - _north + 360) % 360;
 
     if (relative_angle < 0)
         relative_angle += 360;
@@ -64,7 +64,7 @@ uint8_t RelativeNXTCompass::angle()
     return relative_angle;
 }
 
-uint8_t RelativeNXTCompass::real_north()
+uint16_t RelativeNXTCompass::real_north()
 {
     return _north;
 }
