@@ -31,16 +31,19 @@ RelativeNXTCompass::RelativeNXTCompass(uint8_t i2c_address)
 
 uint8_t RelativeNXTCompass::read_raw()
 {
-    byte r[2];
-    r[0] = readByte(0x44);
-    r[1] = readByte(0x45);
+    uint8_t r0, r1;
+    r0 = readByte(0x44);
+    r1 = readByte(0x45);
+
+    r1 *= 256;
+
     delay(10);
 
-    Serial.print(r[0]);
+    Serial.print(r0);
     Serial.print(' ');
-    Serial.println(r[1]);
+    Serial.println(r1);
 
-    return ((r[1] * 256) + r[0]);
+    return (r1 + r0);
 }
 
 
