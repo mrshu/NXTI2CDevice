@@ -35,7 +35,7 @@ uint8_t RelativeNXTCompass::read_raw()
     r[0] = readByte(0x44);
     r[1] = readByte(0x45);
     delay(10);
-    int c = (r[1] * 256) + (word) r[0];
+    int c = (r[1] * 256) + (uint8_t) r[0];
     return c;
 }
 
