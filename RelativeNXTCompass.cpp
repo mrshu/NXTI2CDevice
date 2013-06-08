@@ -47,7 +47,7 @@ void RelativeNXTCompass::set_north()
 
 uint8_t RelativeNXTCompass::angle()
 {
-    uint8_t relative_angle = (angle_raw() - _north + 360) % 360;
+    uint8_t relative_angle = (read_raw() - _north + 360) % 360;
 
     if (relative_angle < 0)
         relative_angle += 360;
