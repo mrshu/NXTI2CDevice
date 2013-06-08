@@ -32,12 +32,12 @@ void HTIRSeekerV2::read(uint8_t *dir, uint8_t *s1, uint8_t *s2, uint8_t *s3, uin
                     uint8_t *s5)
 {
 
-    dir  = readByte(0x49);
-    s1 = readByte(0x4A);
-    s2 = readByte(0x4B);
-    s3 = readByte(0x4C);
-    s4 = readByte(0x4D);
-    s5 = readByte(0x4E);
+    *dir  = readByte(0x49);
+    *s1 = readByte(0x4A);
+    *s2 = readByte(0x4B);
+    *s3 = readByte(0x4C);
+    *s4 = readByte(0x4D);
+    *s5 = readByte(0x4E);
     delay(10);
 }
 
