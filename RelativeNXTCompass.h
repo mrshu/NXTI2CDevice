@@ -33,6 +33,8 @@ public:
 	uint8_t		angle();
 	uint8_t		real_north();
 	void        set_north();
+private:
+    uint8_t     _north;
 };
 
 #endif
